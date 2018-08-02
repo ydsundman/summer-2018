@@ -1,12 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+const quotes=[
+  'Don\'t wait for opportunity. Create it.',
+  'Now, if you two don\'t mind, I\'m going to bed before either of you come up with another clever idea to get us killed or worse, expelled!'
+]
 export default class App extends React.Component {
+  state={
+    index:0
+  }
+
   render() {
+const quote = quotes[Math.round(Math.random())]
     return (
       <View style={styles.container}>
-        <Text>Quote Randomizer</Text>
-	<Text>By Nabila, Yasmin, Yassal and Daniel</Text>
+        <Text>{quote}</Text>
       </View>
     );
   }
