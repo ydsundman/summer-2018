@@ -10,11 +10,11 @@ const quotes=[
 ]
 export default class App extends React.Component {
   state={
-    index:0
+    index:getRandomInt(quotes.length)
   }
 
   render() {
-    const quote = quotes[getRandomInt(quotes.length)]
+    const quote = quotes[this.state.index]
     return (
       <View style={styles.container}>
         <Text>{quote}</Text>
