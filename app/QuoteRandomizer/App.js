@@ -6,6 +6,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Quote Randomizer</Text>
+	<Text>By Nabila, Yasmin, Yassal and Daniel</Text>
       </View>
     );
   }
