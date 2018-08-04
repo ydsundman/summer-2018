@@ -1,6 +1,6 @@
 import React from 'react';
 import { Font, AppLoading } from 'expo';
-import { Container, Header, Content, Body, Title } from 'native-base';
+import { Container } from 'native-base';
 
 import Quote from './src/Quote.js';
 
@@ -28,14 +28,7 @@ export default class App extends React.Component {
 
 		return (
 			<Container>
-				<Header>
-					<Body>
-						<Title>Quote Randomizer</Title>
-					</Body>
-				</Header>
-				<Content padder>
-					<Quote />
-				</Content>
+				<Quote />
 			</Container>
 		);
 	}
