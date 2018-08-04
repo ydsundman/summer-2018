@@ -12,19 +12,31 @@ import {
 	CardItem
 } from 'native-base';
 
+import * as Animatable from 'react-native-animatable';
+const MyCard = Animatable.createAnimatableComponent(Card);
+
 import quotes from '../data/quotes.json';
 
 const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
 
 export default class Quote extends React.Component {
 	state = {
-		index: getRandomInt(quotes.length)
+		index: getRandomInt(quotes.length),
+		animation: 'fadeInRight',
+		duration: 1000
 	};
 
 	newRandomQuote = () => {
-		this.setState({
-			index: getRandomInt(quotes.length)
-		});
+		this.setState({ animation: 'fadeOutLeft', duration: 500 });
+		setTimeout(
+			() =>
+				this.setState({
+					index: getRandomInt(quotes.length),
+					animation: 'fadeInRight',
+					duration: 1000
+				}),
+			1000
+		);
 	};
 
 	render() {
@@ -35,12 +47,23 @@ export default class Quote extends React.Component {
 					<Title>Quote Randomizer</Title>
 				</Body>
 			</Header>,
-			<Content key="content" padder contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-				<Card>
+			<Content
+				key="content"
+				padder
+				contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+				<MyCard animation={this.state.animation} duration={this.state.duration}>
 					<CardItem>
-						<Text style={{fontSize: 30, fontWeight: '200', textAlign: 'center', fontStyle: 'italic'}}>{quote}</Text>
+						<Text
+							style={{
+								fontSize: 30,
+								fontWeight: '200',
+								textAlign: 'center',
+								fontStyle: 'italic'
+							}}>
+							{quote}
+						</Text>
 					</CardItem>
-				</Card>
+				</MyCard>
 			</Content>,
 			<Footer key="footer">
 				<FooterTab>
