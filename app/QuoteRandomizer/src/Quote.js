@@ -8,7 +8,6 @@ import {
 	FooterTab,
 	Button,
 	Text,
-	View,
 	Card,
 	CardItem
 } from 'native-base';
@@ -36,14 +35,12 @@ export default class Quote extends React.Component {
 					<Title>Quote Randomizer</Title>
 				</Body>
 			</Header>,
-			<Content key="content" padder>
-				<View>
-					<Card>
-						<CardItem>
-							<Text>{quote}</Text>
-						</CardItem>
-					</Card>
-				</View>
+			<Content key="content" padder contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
+				<Card>
+					<CardItem>
+						<Text>{quote}</Text>
+					</CardItem>
+				</Card>
 			</Content>,
 			<Footer key="footer">
 				<FooterTab>
