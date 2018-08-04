@@ -38,7 +38,7 @@ export default class Quote extends React.Component {
 			<Content key="content" padder contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
 				<Card>
 					<CardItem>
-						<Text>{quote}</Text>
+						<Text style={{fontSize: 30, fontWeight: '200', textAlign: 'center', fontStyle: 'italic'}}>{quote}</Text>
 					</CardItem>
 				</Card>
 			</Content>,
