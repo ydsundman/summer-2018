@@ -36,7 +36,10 @@ export default class Quote extends React.Component {
 					<Title> Quote Randomizer </Title>
 				</Body>
 			</Header>,
-			<Content key="content" padder>
+			<Content
+				key="content"
+				padder
+				contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
 				<Card>
 					<CardItem>
 						<Text>{quote}</Text>
