@@ -19,23 +19,25 @@ import quotes from '../data/quotes.json';
 
 const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
 
+const duration = 500;
+
 export default class Quote extends React.Component {
 	state = {
 		index: getRandomInt(quotes.length),
 		animation: 'fadeInRight',
-		duration: 1000
+		duration
 	};
 
 	newRandomQuote = () => {
-		this.setState({ animation: 'fadeOutLeft', duration: 500 });
+		this.setState({ animation: 'fadeOutLeft', duration });
 		setTimeout(
 			() =>
 				this.setState({
 					index: getRandomInt(quotes.length),
 					animation: 'fadeInRight',
-					duration: 1000
+					duration
 				}),
-			1000
+			duration
 		);
 	};
 
@@ -65,10 +67,14 @@ export default class Quote extends React.Component {
 					</CardItem>
 				</MyCard>
 			</Content>,
-			<Footer key="footer">
+			<Footer key="footer" style={{ height: 200 }}>
 				<FooterTab>
-					<Button full primary onPress={this.newRandomQuote}>
-						<Text style={{ color: 'white', fontSize: 16 }}>Randomize</Text>
+					<Button
+						full
+						primary
+						onPress={this.newRandomQuote}
+						style={{ height: 200 }}>
+						<Text style={{ color: 'white', fontSize: 25 }}>Randomize</Text>
 					</Button>
 				</FooterTab>
 			</Footer>
