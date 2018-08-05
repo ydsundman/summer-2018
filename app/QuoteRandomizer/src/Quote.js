@@ -1,6 +1,17 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, Text } from 'native-base';
+import { StyleSheet } from 'react-native';
+import {
+	Button,
+	Text,
+	Header,
+	Content,
+	Body,
+	Title,
+	Footer,
+	FooterTab,
+	Card,
+	CardItem
+} from 'native-base';
 
 import quotes from '../data/quotes.json';
 
@@ -19,14 +30,27 @@ export default class Quote extends React.Component {
 
 	render() {
 		const quote = quotes[this.state.index];
-		return (
-			<View style={styles.container}>
-				<Button block onPress={this.newRandomQuote}>
-					<Text>Randomize</Text>
-				</Button>
-				<Text>{quote}</Text>
-			</View>
-		);
+		return [
+			<Header key="header">
+				<Body>
+					<Title> Quote Randomizer </Title>
+				</Body>
+			</Header>,
+			<Content key="content" padder>
+				<Card>
+					<CardItem>
+						<Text>{quote}</Text>
+					</CardItem>
+				</Card>
+			</Content>,
+			<Footer key="footer">
+				<FooterTab>
+					<Button full primary onPress={this.newRandomQuote}>
+						<Text style={{ color: 'white', fontSize: 16 }}>Randomize</Text>
+					</Button>
+				</FooterTab>
+			</Footer>
+		];
 	}
 }
 
