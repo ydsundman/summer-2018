@@ -42,7 +42,15 @@ export default class Quote extends React.Component {
 				contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
 				<Card>
 					<CardItem>
-						<Text>{quote}</Text>
+						<Text
+							style={{
+								textAlign: 'center',
+								fontSize: 30,
+								fontWeight: '200',
+								fontStyle: 'italic'
+							}}>
+							{quote}
+						</Text>
 					</CardItem>
 				</Card>
 			</Content>,
