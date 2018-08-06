@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import {
 	Button,
 	Text,
@@ -18,7 +18,19 @@ const AnimatableCard = Animatable.createAnimatableComponent(Card);
 import quotes from '../data/quotes.json';
 
 const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
-
+const cardFont = Platform.select({
+	ios: {
+		fontSize: 30,
+		fontWeight: '200',
+		fontStyle: 'italic',
+		fontFamily: 'Copperplate'
+	},
+	android: {
+		fontSize: 30,
+		fontWeight: '200',
+		fontStyle: 'italic'
+	}
+});
 export default class Quote extends React.Component {
 	state = {
 		index: getRandomInt(quotes.length),
@@ -56,9 +68,7 @@ export default class Quote extends React.Component {
 						<Text
 							style={{
 								textAlign: 'center',
-								fontSize: 30,
-								fontWeight: '200',
-								fontStyle: 'italic'
+								...cardFont
 							}}>
 							{quote}
 						</Text>
