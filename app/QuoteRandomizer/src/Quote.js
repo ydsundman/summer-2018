@@ -12,6 +12,8 @@ import {
 	Card,
 	CardItem
 } from 'native-base';
+import * as Animatable from 'react-native-animatable';
+const AnimatableCard = Animatable.createAnimatableComponent(Card);
 
 import quotes from '../data/quotes.json';
 
@@ -19,13 +21,22 @@ const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
 
 export default class Quote extends React.Component {
 	state = {
-		index: getRandomInt(quotes.length)
+		index: getRandomInt(quotes.length),
+		animation: 'fadeInRight'
 	};
 
 	newRandomQuote = () => {
 		this.setState({
-			index: getRandomInt(quotes.length)
+			animation: 'fadeOutLeft'
 		});
+		setTimeout(
+			() =>
+				this.setState({
+					animation: 'fadeInRight',
+					index: getRandomInt(quotes.length)
+				}),
+			500
+		);
 	};
 
 	render() {
@@ -40,7 +51,7 @@ export default class Quote extends React.Component {
 				key="content"
 				padder
 				contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
-				<Card>
+				<AnimatableCard animation={this.state.animation} duration={500}>
 					<CardItem>
 						<Text
 							style={{
@@ -52,7 +63,7 @@ export default class Quote extends React.Component {
 							{quote}
 						</Text>
 					</CardItem>
-				</Card>
+				</AnimatableCard>
 			</Content>,
 			<Footer key="footer">
 				<FooterTab>
